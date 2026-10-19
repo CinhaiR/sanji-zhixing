@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+
+  /*
+   * 移动端底部标签栏占用的高度（栏本身 4.5rem + 安全区）。
+   * 桌面端标签栏是 lg:hidden，故置 0 —— 用媒体查询统一处理，
+   * 需要「满屏高度」的页面直接扣掉这个变量即可，不必各自写死数字。
+   *
+   * 之所以要有它：底部标签栏是 fixed 定位，会盖住内容。
+   * 驿路谋士是满屏聊天布局（100dvh），必须扣除栏高，否则输入框被栏遮住。
+   * 曾因为「不想让输入框被遮」而干脆把导航栏藏掉 —— 结果用户进了这一页就出不去。
+   * 正确做法是**导航永远在**，把高度减掉。
+   */
+  --bottom-bar-h: calc(4.5rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --bottom-bar-h: 0px;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Noto Serif SC', serif;
+  background-color: #f5f0e6;
+  color: #2c2419;
+}
+
+/* 印章样式 */
+.seal-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a83232;
+  color: #fbf9f5;
+  font-family: 'Ma Shan Zheng', serif;
+  letter-spacing: 0.1em;
+}
+
+/* 墨迹边框 */
+.ink-border-thin {
+  border: 1px solid rgba(44, 36, 25, 0.15);
+}
+
+.ink-border-double {
+  border: 2px solid rgba(44, 36, 25, 0.25);
+  box-shadow: inset 0 0 0 1px rgba(168, 50, 50, 0.15);
+}
+
+/* 宣纸阴影 */
+.shadow-scroll {
+  box-shadow: 0 4px 20px rgba(44, 36, 25, 0.08);
+}

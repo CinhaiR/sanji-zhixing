@@ -1,0 +1,88 @@
+# ============================================================
+# 三晋智行 .gitignore
+#
+# 最重要的三条是「密钥」与「本地数据」：
+#   .env 里是明文 DeepSeek API Key，一旦提交就永久留在历史里，
+#   删除后续提交也救不回来（只能轮换密钥）。
+# ============================================================
+
+# --- 密钥与配置（最高优先级）---
+.env
+.env.local
+.env.*.local
+backend/.env
+frontend/.env
+*.acl.bak
+
+# --- 证书与私钥（防误提交）---
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+*.ppk
+
+# --- 助手/工具本地数据 ---
+.workbuddy-ai/
+.claude/
+.cursor/
+
+# --- 本地数据库 ---
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+sanji_zhixing.db
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# --- Node / 前端 ---
+node_modules/
+dist/
+.vite/
+*.local
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- 构建与部署产物 ---
+sjx-deploy.zip
+*.stage
+
+# 部署用配置：由 .env.example 复制而来，**含真实密钥**，用完即删
+deploy.env
+deploy.minimal.env
+deploy*.base64.txt
+env_*.ps1
+
+# TypeScript 增量构建信息与生成物
+# （tsconfig 已把输出改到 node_modules/.tmp，这里再兜一层）
+*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
+
+# --- 编辑器与系统 ---
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- 日志与临时文件 ---
+*.log
+tmp/
+temp/

@@ -1,0 +1,19 @@
+fastapi==0.110.0
+uvicorn[standard]==0.27.1
+pydantic==2.6.1
+pydantic-settings==2.1.0
+sqlalchemy==2.0.25
+python-multipart==0.0.6
+python-dotenv==1.0.1
+httpx==0.27.0
+
+# User auth (login / register / captcha).
+# python-jose[cryptography] pulls in cryptography / ecdsa / rsa for JWT signing.
+python-jose[cryptography]==3.5.0
+# Password hashing (only hashes are stored, never plaintext).
+bcrypt==5.0.0
+# Renders the captcha image.
+Pillow==12.3.0
+
+# Tests (optional, dev-only; not needed on the server).
+pytest>=8.0.0
